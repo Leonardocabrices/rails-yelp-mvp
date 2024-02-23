@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @restaurant %>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review|%>
+    <li class="list-group-item"><%= review.content%></li>
+    <%= link_to "delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "are you sure"} %>
+  <% end %>
+</ul>
+
+<div>
+  <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
+  <%= link_to "Back to restaurants", restaurants_path %>
+  <%= link_to "create review", new_restaurant_review_path(@restaurant) %>
+  <%= link_to "Destroy", @restaurant, data: {turbo_method: :delete, turbo_confirm: "are you sure"} %>
+</div>
